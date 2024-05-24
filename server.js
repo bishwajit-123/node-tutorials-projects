@@ -10,15 +10,18 @@
 // }
 // const numbers = [1,2,5,6];
 // console.log(array(numbers));
+
 const express = require('express')
 const app = express()
 const db = require('./db.js')
+require('dotenv').config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000; // Use 3000 as a default
 // app.get('/', function (req, res) {
 //   res.send('Hello World')
 // })
-// app.listen(3000)
+// app.listen(3000) 
 
 // app.get('/', function(req, res) {
 //     var customizedData = {
@@ -28,7 +31,7 @@ app.use(bodyParser.json());
 // };
 // res.json(customizedData);
 // });
-// app.listen(3000)
+// app.listen(3000) 
 
 
 
@@ -42,7 +45,10 @@ app.use('/MenuItem', menuRoutes);
 
 
 
+
 app.get('/items', function(req, res){
     res.send("Items are ready")
 });
-app.listen(3000)
+app.listen(PORT, () =>{
+    console.log('listening on port 3000');
+    })
